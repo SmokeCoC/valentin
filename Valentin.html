@@ -1,0 +1,414 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Un ramo para ti</title>
+    <style>
+         body {
+            height: 100vh;
+            width: 100vw;
+            background: url('manos.jpg') no-repeat center center/cover;
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            position: relative;
+            height: 600px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            animation: apareceRosa 1s ease-in-out forwards;
+        }
+
+        @keyframes apareceRosa {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .petals>div {
+            position: absolute;
+            background: #ff0000;
+            width: 85px;
+            height: 120px;
+            transition: all 2s ease-in-out;
+            opacity: 0;
+        }
+
+        .petals>div:nth-child(1) {
+            border-radius: 15px;
+            box-shadow: 0px 0px 60px rgba(255, 0, 0, 1);
+            left: calc(50% - 42px);
+            top: 200px;
+            background: #ff0000;
+            animation: bloomCenter 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .petals>div:nth-child(2),
+        .petals>div:nth-child(4),
+        .petals>div:nth-child(6) {
+            background: #cc0000;
+            left: calc(50% - 80px);
+            border-radius: 0px 50px 0px 50px;
+            transform-origin: bottom right;
+        }
+
+        .petals>div:nth-child(3),
+        .petals>div:nth-child(5),
+        .petals>div:nth-child(7) {
+            background: #cc0000;
+            left: calc(50% - 10px);
+            border-radius: 50px 0px 50px 0px;
+            transform-origin: bottom left;
+        }
+
+        .petals>div:nth-child(2) {
+            z-index: 5;
+            top: 218px;
+            height: 130px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+            animation: bloom2 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .petals>div:nth-child(3) {
+            z-index: 4;
+            top: 218px;
+            height: 130px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+            animation: bloom3 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .petals>div:nth-child(4) {
+            z-index: 3;
+            top: 213px;
+            height: 135px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+            animation: bloom4 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .petals>div:nth-child(5) {
+            z-index: 2;
+            top: 213px;
+            height: 135px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+            animation: bloom5 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .petals>div:nth-child(6) {
+            z-index: 1;
+            top: 200px;
+            height: 130px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .3);
+            animation: bloom6 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .petals>div:nth-child(7) {
+            z-index: 0;
+            top: 200px;
+            height: 130px;
+            box-shadow: 0px 0px 60px rgba(245, 148, 184, .3);
+            animation: bloom7 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .leaves>div:nth-last-child(1) {
+            position: absolute;
+            width: 55px;
+            height: 30px;
+            background: #338f37;
+            top: 334px;
+            left: calc(50% - 32px);
+            border-radius: 100px;
+            opacity: 0;
+            animation: apareceHojas 1s ease-in-out forwards;
+        }
+
+        .leaves>div:nth-child(1) {
+            position: absolute;
+            width: 15px;
+            height: 390px;
+            background: #054c05;
+            top: 308px;
+            left: calc(50% - 7px);
+            border-radius: 0 0 100px 100px;
+            opacity: 0;
+            animation: apareceHojas 1s ease-in-out forwards;
+        }
+
+        .leaves>div:nth-child(2) {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            border-radius: 10px 80px 40px 80px;
+            background: #054c05;
+            transform-origin: bottom;
+            transform: rotate(-30deg);
+            top: 412px;
+            left: calc(50% - 56px);
+            box-shadow: inset 10px 10px #066406;
+            opacity: 0;
+            animation: apareceHojas 1s ease-in-out forwards;
+        }
+
+        .leaves>div:nth-child(3) {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            border-radius: 80px 1px 80px 40px;
+            background: #054c05;
+            transform-origin: bottom;
+            transform: rotate(30deg);
+            top: 360px;
+            left: calc(50% - 10px);
+            box-shadow: inset -10px 10px #066406;
+            opacity: 0;
+            animation: apareceHojas 1s ease-in-out forwards;
+        }
+
+        @keyframes apareceHojas {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bloomCenter {
+            0% { transform: scale(0.1); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes bloom2 {
+            0% { transform: scale(0.1) rotate(0deg); opacity: 0; }
+            100% { transform: rotate(-60deg); opacity: 1; }
+        }
+
+        @keyframes bloom3 {
+            0% { transform: scale(0.1) rotate(0deg); opacity: 0; }
+            100% { transform: rotate(50deg); opacity: 1; }
+        }
+
+        @keyframes bloom4 {
+            0% { transform: scale(0.1) rotate(0deg); opacity: 0; }
+            100% { transform: rotate(-25deg); opacity: 1; }
+        }
+
+        @keyframes bloom5 {
+            0% { transform: scale(0.1) rotate(0deg); opacity: 0; }
+            100% { transform: rotate(25deg); opacity: 1; }
+        }
+
+        @keyframes bloom6 {
+            0% { transform: scale(0.1) rotate(0deg); opacity: 0; }
+            100% { transform: rotate(-10deg); opacity: 1; }
+        }
+
+        @keyframes bloom7 {
+            0% { transform: scale(0.1) rotate(0deg); opacity: 0; }
+            100% { transform: rotate(10deg); opacity: 1; }
+        }
+
+        @keyframes glowing {
+            50% {
+                background: #d7365f;
+                box-shadow: 0px 0px 60px rgba(245, 148, 184, 1);
+            }
+        }
+
+        .content-wrapper {
+            position: fixed;
+            top: 65%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        .texto {
+            color: white;
+            font-size: 35px;
+            text-shadow: 2px 2px 10px black;
+            opacity: 0;
+            animation: apareceTexto 2s ease-in-out 4s forwards;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes apareceTexto {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .botones {
+            margin-top: 30px;
+            opacity: 0;
+            animation: apareceTexto 2s ease-in-out 5s forwards;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .boton {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .si {
+            background: linear-gradient(45deg, #ff4d4d, #ff8080);
+            color: white;
+            transform-origin: center;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .si:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 77, 77, 0.4);
+        }
+
+        .no {
+            background: linear-gradient(45deg, #666, #888);
+            color: white;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .no:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 102, 102, 0.4);
+        }
+
+
+        .mensaje-final {
+            display: none;
+            color: white;
+            font-size: 40px;
+            text-shadow: 2px 2px 10px black;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+            animation: apareceCorazon 2s ease-in-out forwards;
+        }
+
+        @keyframes apareceCorazon {
+            0% {
+                opacity: 0;
+                transform: scale(0.1) rotate(-180deg);
+            }
+            50% {
+                transform: scale(1.2) rotate(0deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .boton.si.expandido {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(100);
+            transition: all 2s ease-in-out;
+            z-index: 9999;
+        }
+
+        .fadeOut {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="leaves">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="petals">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <h4 class="texto">💖¿Te gustaría ser mi Valentín? 💖</h4>
+        <div class="botones">
+            <button class="boton si" onclick="respuestaSi()">💖Shi💖</button>
+            <button class="boton no" onclick="moverBoton()">No >:c</button>
+        </div>
+        <h3 class="mensaje-final">Te amo demasiado solecito 🥺💖</h3>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        const siButton = document.querySelector('.si');
+        const noButton = document.querySelector('.no');
+        const mensajes = [
+            "¿En serio? Di que sí 💕",
+            "¿Me vas a rechazar? 🥺",
+            "Me romperás el corazón 💔",
+            "YAAAAA!!!! ❤️",
+            "Pues ni modo, ya no hay más opciones xd"
+        ];
+
+        function moverBoton() {
+            const distanciaDesplazamiento = 100;
+            noButton.style.transform = `translateX(${distanciaDesplazamiento}px)`;
+
+            clickCount++;
+            if (clickCount <= 5) {
+                const nuevoTamaño = 1 + (clickCount * 0.3); // Aumentamos el factor de crecimiento
+                siButton.style.transform = `scale(${nuevoTamaño})`;
+                siButton.innerText = mensajes[clickCount - 1];
+            }
+            if (clickCount === 5) {
+                setTimeout(respuestaSi, 1000);
+            }
+        }
+
+        function respuestaSi() {
+            // Ocultar gradualmente otros elementos
+            document.querySelector('.texto').classList.add('fadeOut');
+            document.querySelector('.no').classList.add('fadeOut');
+            
+            // Expandir el botón "Sí"
+            siButton.classList.add('expandido');
+            
+            // Después de la expansión, mostrar el mensaje final
+            setTimeout(() => {
+                const mensajeFinal = document.querySelector('.mensaje-final');
+                siButton.style.display = 'none';
+                document.querySelector('.texto').style.display = 'none';
+                document.querySelector('.botones').style.display = 'none';
+                mensajeFinal.style.display = 'block';
+                mensajeFinal.style.position = 'fixed';
+                mensajeFinal.style.top = '50%';
+                mensajeFinal.style.left = '50%';
+                mensajeFinal.style.transform = 'translate(-50%, -50%)';
+                mensajeFinal.style.zIndex = '10000';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
